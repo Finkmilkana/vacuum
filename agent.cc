@@ -6,22 +6,29 @@
 
 Agent::Agent(const Battery* battery, const int* time) :
   battery_(battery), time_(time) {}
-
+  
+  
+  
 Direction Agent::NextDirection(const Perception& p) {
-  const float random = Random();
-  if (random < 0.2) {
-    return Direction::NONE;
-  }
-  if (random < 0.4) {
-    return Direction::LEFT;
-  }
-  if (random < 0.6) {
-    return Direction::UP;
-  }
-  if (random < 0.8) {
-    return Direction::DOWN;
-  }
-  return Direction::RIGHT;
+  
+
+  
+
+    
+    if (p.HasObstacle(last_direction_)){
+    	if (last_direction_==Direction::RIGHT){
+ 			last_direction_ =Direction::LEFT;
+ 		}else {
+ 			last_direction_=Direction::RIGHT;
+		 }
+    	return Direction::DOWN;
+    } 
+	    	
+    	return last_direction_;
+	
+	
+    	
+  
 }
 
 bool Agent::IsAlive() const {

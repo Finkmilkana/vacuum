@@ -24,6 +24,8 @@ class Agent {
   const Battery* battery_;
   // Not owned by the agent.
   const int* time_;
+  //last direction taken
+  Direction last_direction_ = Direction::NONE;
 };
 
 #endif  // AGENT_H_
